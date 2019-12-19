@@ -19,8 +19,8 @@
 	
 	import org.glassfish.jersey.internal.util.Base64;
 
-import com.web.crypto.CCrypto;
-import com.web.crypto.ICrypto;
+	import com.web.crypto.CCrypto;
+	import com.web.crypto.ICrypto;
 	
 	/**
 	 * This filter verify the access permissions for a user
@@ -45,7 +45,7 @@ import com.web.crypto.ICrypto;
 	    {
 	        Method method = resourceInfo.getResourceMethod();
 	        //Access allowed for all
-	        if( ! method.isAnnotationPresent(PermitAll.class))
+	        if( ! method.isAnnotationPresent(PermitAll.class) && method.isAnnotationPresent(RolesAllowed.class))
 	        {
 	            //Access denied for all
 	            if(method.isAnnotationPresent(DenyAll.class))
